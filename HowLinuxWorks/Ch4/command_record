@@ -5,3 +5,5 @@ cc -o sched sched.c
 taskset -c 0 ./sched 1 100 1
 taskset -c 0 ./sched 2 100 1
 taskset -c 0 ./sched 4 100 1
+
+python3 ./sched.py 2 100 1
