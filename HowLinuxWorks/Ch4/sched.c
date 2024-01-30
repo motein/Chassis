@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
     clock_gettime(CLOCK_MONOTONIC, &start);
     int i, ncreated;
     for (i = 0, ncreated = 0; i < nproc; i++, ncreated++){
-        pids[i] = fork();
+        pids[i] = fork(); // create child process
         if (pids[i] < 0){
             goto wait_children;
         } else if (pids[i] == 0){
@@ -134,9 +134,11 @@ int main(int argc, char *argv[])
             if (wait(NULL) < 0)
                 warn("wait() failed.");
                 
-        free_pids:
+    free_pids:
         free(pids);
-        free_logbuf:
+
+    free_logbuf:
         free(logbuf);
-        exit(ret);
+        
+    exit(ret);
 }
