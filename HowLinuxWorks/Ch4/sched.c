@@ -16,7 +16,7 @@ static inline long diff_nsec(struct timespec before, struct timespec after)
     return ((after.tv_sec * NSECS_PER_SEC + after.tv_nsec) - (before.tv_sec * NSECS_PER_SEC + before.tv_nsec));
 }
 
-static unsigned long loops_per_msec()
+static unsigned long loops_per_msec() // Calculate how many loops per 1 ms
 {
     struct timespec before, after;
     clock_gettime(CLOCK_MONOTONIC, &before);
@@ -89,8 +89,7 @@ int main(int argc, char *argv[])
     }
 
     if (total % resol){
-        fprintf(stderr, "<total>(%d) should be multiple of
-        <resolution>(%d)\n", total, resol);
+        fprintf(stderr, "<total>(%d) should be multiple of <resolution>(%d)\n", total, resol);
         exit(EXIT_FAILURE);
     }
 
@@ -102,7 +101,7 @@ int main(int argc, char *argv[])
     puts("estimating workload which takes just one milisecond");
     unsigned long nloop_per_resol = loops_per_msec() * resol;
     puts("end estimation");
-    fflush(stdout)
+    fflush(stdout);
 
     pids = malloc(nproc * sizeof(pid_t));
     if (pids == NULL){

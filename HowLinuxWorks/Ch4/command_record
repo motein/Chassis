@@ -1,0 +1,3 @@
+cc -o sched sched.c
+./sched 1 10 2
+
