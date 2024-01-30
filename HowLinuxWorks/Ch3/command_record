@@ -1,0 +1,14 @@
+cc -o fork fork.c
+./fork()
+
+readelf -h /bin/sleep
+readelf -S /bin/sleep
+
+/bin/sleep 10000 &
+cat /proc/5186/maps
+kill 5186
+
+
+cc -o fork-and-exec fork-and-exec.c
+./fork-and-exec
+
