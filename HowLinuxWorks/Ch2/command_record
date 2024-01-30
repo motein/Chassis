@@ -1,0 +1,26 @@
+cc -o hello hello.c
+strace -o hello.log ./hello
+cat hello.log
+
+strace -o hello.py.log python3 ./hello.py
+cat hello.py.log
+
+'sar' -P ALL 1
+'sar' -P ALL 1 1
+
+cc -o loop loop.c
+./loop &
+sar -P ALL 1 1
+kill 4672
+
+cc -o ppidloop ppidloop.c
+./ppidloop &
+sar -P ALL 1 1
+kill 4710
+
+strace -T -o hello2.log ./hello
+cat hello2.log
+
+ldd /bin/echo
+ldd ppidloop
+ldd /usr/bin/python3
