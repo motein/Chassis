@@ -6,4 +6,16 @@ taskset -c 0 ./sched 1 100 1
 taskset -c 0 ./sched 2 100 1
 taskset -c 0 ./sched 4 100 1
 
-python3 ./sched.py 2 100 1
+python3 ./sched.py 2
+
+ps ax | wc -l // how many processes running
+
+sar -P ALL 1
+
+taskset -c 0 python3 loop.py &
+sar -P ALL 1
+kill 6018
+
+sar -q 1 1
+
+grep -c processor /proc/cpuinfo
