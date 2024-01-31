@@ -9,10 +9,10 @@ import sys
 matplotlib.use('Agg')
 
 import matplotlib.pyplot as plt
-from matplotlib import rcParams
+import matplotlib as mpl
 
-plt.rcParams['font.family'] = "sans-serif"
-plt.rcParams['font.sans-serif'] = "TakaoPGothic"
+mpl.rcParams['font.family'] = "sans-serif"
+mpl.rcParams['font.sans-serif'] = ['Tahoma', 'DejaVu Sans', 'Lucida Grande', 'Verdana']
 
 def plot_sched(concurrency):
     fig = plt.figure()
