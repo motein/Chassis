@@ -29,14 +29,14 @@ def estimate_loops_per_msec():
 
 def child_fn(n):
     progress = 100*[None]
-    for i in range(100):
+    for i in range(100): # fixed number 100
         for j in range(nloop_per_msec):
             pass
         progress[i] = time.perf_counter()
-    f = open("{}.data".format(n),"w")
-    for i in range(100):
-        f.write("{}\t{}\n".format((progress[i]-start)*1000,i))
-    f.close()
+    with open("{}.data".format(n),"w") as f:
+        for i in range(100):
+            f.write("{}\t{}\n".format((progress[i]-start)*1000, i))
+
     exit(0)
 
 if len(sys.argv) < 2:
