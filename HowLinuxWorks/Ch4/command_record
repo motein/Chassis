@@ -19,3 +19,22 @@ kill 6018
 sar -q 1 1
 
 grep -c processor /proc/cpuinfo
+taskset -c 0,4 ./sched 4 100 1
+
+time taskset -c 0 ./sched 1 10000 10000 // run time & execution time
+
+time sleep 10
+
+ps -eo pid,comm,etime,time // To get security info
+
+taskset -c 0 python3 ./loop.py &
+ps -eo pid,comm,etime,time | grep python3
+kill 8377
+
+cc -o sched_nice sched_nice.c
+taskset -c 0 ./sched_nice 100 1
+
+nice -n 5 echo hello
+nice -n 5 python3 ./loop.py &
+sar -P ALL 1 1
+kill 9227
