@@ -22,7 +22,6 @@ grep -c processor /proc/cpuinfo
 taskset -c 0,4 ./sched 4 100 1
 
 time taskset -c 0 ./sched 1 10000 10000 // run time & execution time
-
 time sleep 10
 
 ps -eo pid,comm,etime,time // To get security info
