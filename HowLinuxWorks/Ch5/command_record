@@ -1,0 +1,7 @@
+free
+sar -r 1
+
+cc -o segv segv.c
+./segv
+
+
