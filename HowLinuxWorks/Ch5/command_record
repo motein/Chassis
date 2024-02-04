@@ -4,4 +4,6 @@ sar -r 1
 cc -o segv segv.c
 ./segv
 
-
+cc -o mmap mmap.c
+./mmap
+python3 -c "print(0x7f1389400000 - 0x7f1383000000)"
