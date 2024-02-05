@@ -22,3 +22,6 @@ sar -r 1 // kbmemused segment
 ./demand-paging
 sar -B 1 // fault/s segment: page fault/second
 
+./demand-paging
+sudo sh ./vsz-rss.sh
+
