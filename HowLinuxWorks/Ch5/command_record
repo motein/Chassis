@@ -6,4 +6,10 @@ cc -o segv segv.c
 
 cc -o mmap mmap.c
 ./mmap
+
 python3 -c "print(0x7f1389400000 - 0x7f1383000000)"
+
+echo hello >testfile
+cc -o filemap filemap.c
+./filemap
+cat testfile
