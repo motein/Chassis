@@ -25,3 +25,5 @@ sar -B 1 // fault/s segment: page fault/second
 ./demand-paging
 sudo sh ./vsz-rss.sh
 
+cc -o cow cow.c
+./cow
