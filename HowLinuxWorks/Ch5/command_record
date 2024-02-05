@@ -13,3 +13,8 @@ echo hello >testfile
 cc -o filemap filemap.c
 ./filemap
 cat testfile
+
+
+cc -o demand-paging demand-paging.c
+./demand-paging
+sar -r 1
