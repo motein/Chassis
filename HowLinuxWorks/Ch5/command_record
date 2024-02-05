@@ -17,4 +17,8 @@ cat testfile
 
 cc -o demand-paging demand-paging.c
 ./demand-paging
-sar -r 1
+sar -r 1 // kbmemused segment
+
+./demand-paging
+sar -B 1 // fault/s segment: page fault/second
+
