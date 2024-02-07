@@ -5,11 +5,11 @@
 #include <stdlib.h>
 #include <err.h>
 
-#define CACHE_LINE_SIZE  64
-#define NLOOP            (4*1024UL*1024*1024)
-#define NSECS_PER_SEC    1000000000UL
+#define CACHE_LINE_SIZE  64 // 64 Bytes
+#define NLOOP            (4*1024UL*1024*1024) // 4G(loop number)
+#define NSECS_PER_SEC    1000000000UL // 10^9
 
-static inline long diff_nsec(struct timespec before, struct timespec after)
+static inline long diff_nsec(struct timespec before, struct timespec after) // nano second
 {
     return ((after.tv_sec * NSECS_PER_SEC + after.tv_nsec) - (before.tv_sec * NSECS_PER_SEC + before.tv_nsec));
 }
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     }
 
     register int size;
-    size = atoi(argv[1]) * 1024;
+    size = atoi(argv[1]) * 1024; // KB
     if (!size) {
         fprintf(stderr, "size should be >= 1: %d\n", size);
         exit(EXIT_FAILURE);
@@ -39,12 +39,12 @@ int main(int argc, char *argv[])
     clock_gettime(CLOCK_MONOTONIC, &before);
 
     int i;
-    for (i = 0; i < NLOOP / (size / CACHE_LINE_SIZE); i++) {
+    for (i = 0; i < NLOOP / (size / CACHE_LINE_SIZE); i++) { // the number of cache items (size / CACHE_LINE_SIZE)
         long j;
         for (j = 0; j < size; j += CACHE_LINE_SIZE)
-            buffer[j] = 0;
-    }
-    
+            buffer[j] = 0; // write
+    } // the total write times is still NLOOP
+
     clock_gettime(CLOCK_MONOTONIC, &after);
     printf("%f\n", (double)diff_nsec(before, after) / NLOOP);
     if (munmap(buffer, size) == -1)
