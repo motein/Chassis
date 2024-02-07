@@ -27,3 +27,16 @@ sudo sh ./vsz-rss.sh
 
 cc -o cow cow.c
 ./cow
+
+// Swap
+swapon --show
+free
+sar -W 1
+sar -S 1
+
+sar -r ALL 1
+
+// huge page
+cat /sys/kernel/mm/transparent_hugepage/enabled
+
+sudo echo never > /sys/kernel/mm/transparent_hugepage/enabled
