@@ -1,0 +1,4 @@
+cc -O3 -o cache cache.c
+
+for i in 4 8 16; do ./cache $i; done
+
