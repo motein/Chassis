@@ -10,3 +10,7 @@ free
 time cat testfile>/dev/null // read fil(the second time)
 sar -r 1 // page buffering amount
 rm testfile // remove the file
+
+// read file twice experiment
+sudo sh ./read-twice.sh
+sar -B 1
