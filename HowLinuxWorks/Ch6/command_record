@@ -12,5 +12,11 @@ sar -r 1 // page buffering amount
 rm testfile // remove the file
 
 // read file twice experiment
-sudo sh ./read-twice.sh
 sar -B 1
+sudo sh ./read-twice.sh
+
+// test disk I/O throughput
+mount | grep "on / type"
+sar -d -p 1
+sudo sh ./read-twice.sh
+
