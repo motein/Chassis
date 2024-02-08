@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "command_record": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

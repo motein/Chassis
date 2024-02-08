@@ -2,3 +2,11 @@ cc -O3 -o cache cache.c
 
 for i in 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 32768; do ./cache $i; done
 
+// read file experiment
+dd if=/dev/zero of=testfile oflag=direct bs=1M count=1K // create file
+free
+time cat testfile>/dev/null // read fil(the first time)
+free
+time cat testfile>/dev/null // read fil(the second time)
+sar -r 1 // page buffering amount
+rm testfile // remove the file
