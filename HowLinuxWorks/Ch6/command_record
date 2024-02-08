@@ -20,3 +20,16 @@ mount | grep "on / type"
 sar -d -p 1
 sudo sh ./read-twice.sh
 
+// write fiel experiment
+rm -f testfile
+time dd if=/dev/zero of=testfile oflag=direct bs=1M count=1K // create file
+
+rm -f testfile
+time dd if=/dev/zero of=testfile bs=1M count=1K // create file
+
+sar -B 1
+sudo sh ./write.sh
+
+// disk I/O throughput
+sar -d -p 1
+sudo sh ./write.sh
