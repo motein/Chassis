@@ -1,0 +1,9 @@
+df
+sudo su
+cd /mnt
+// create folders
+for ((i=0;i<100000;i++)); do mkdir $i; done
+df
+// clean folders
+for ((i=0;i<100000;i++)); do rmdir $i; done
+df
