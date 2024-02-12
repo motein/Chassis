@@ -7,3 +7,11 @@ df
 // clean folders
 for ((i=0;i<100000;i++)); do rmdir $i; done
 df
+
+ls -l /dev
+ps ax | grep bash
+
+sudo su
+// pseudo terminal slave
+echo hello>dev/pts/0 // 0 is from the output of the above command
+echo hello>dev/pts/2 // Output hello to another terminal
